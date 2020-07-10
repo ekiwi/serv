@@ -7,7 +7,8 @@ RUN_TARGET=\
     $(TARGET_SIM) \
         +timeout=100000000 \
         +signature=$(*).signature.output \
-        +firmware=$(<).hex 2> $@
+        +firmware=$(<).hex 2> $@ \
+        +vcd=$(<F).vcd
 
 RISCV_PREFIX   ?= riscv32-unknown-elf-
 RISCV_GCC      ?= $(RISCV_PREFIX)gcc

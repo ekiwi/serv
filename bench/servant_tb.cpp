@@ -107,7 +107,7 @@ int main(int argc, char **argv, char **env)
 	  Verilated::traceEverOn(true);
 	  tfp = new VerilatedVcdC;
 	  top->trace (tfp, 99);
-	  tfp->open ("trace.vcd");
+	  tfp->open (vcd+5);
 	}
 
 	signal(SIGINT, INThandler);

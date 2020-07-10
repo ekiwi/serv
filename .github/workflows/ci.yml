@@ -41,10 +41,10 @@ jobs:
         cd $SERV/workspace
         fusesoc run --target=lint serv
 
-    - name: build servant
+    - name: build servant with trace
       run: |
         cd $SERV/workspace
-        fusesoc run --target=verilator_tb --setup --build servant
+        fusesoc run --target=verilator_tb --setup --build servant --vcd
 
     - name: download risc-v compliance
       run: |
@@ -55,4 +55,15 @@ jobs:
       run: |
         cd $SERV/riscv-compliance
         make TARGETDIR=$SERV/serv/riscv-target RISCV_TARGET=serv RISCV_DECICE=rv32i RISCV_ISA=rv32i TARGET_SIM=$SERV/workspace/build/servant_$SERVANT_VERSION/verilator_tb-verilator/Vservant_sim
+
+    - name: move risc-v compliance traces
+      run: |
+        mkdir traces
+        cp $SERV/riscv-compliance/riscv-test-suite/rv32i/*.vcd traces/
+
+    - name: save risc-v compliance traces
+      uses: actions/upload-artifact@v2
+      with:
+        name: compliance-traces
+        path: traces/
 
