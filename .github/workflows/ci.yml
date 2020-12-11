@@ -2,9 +2,9 @@ name: serv ci
 
 on:
   push:
-    branches: [ master ]
+    branches: [ master, summer2020 ]
   pull_request:
-    branches: [ master ]
+    branches: [ master, summer2020 ]
 
 jobs:
   compliance:
