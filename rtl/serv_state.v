@@ -18,7 +18,7 @@ module serv_state
    input wire 	     i_slt_op,
    input wire 	     i_e_op,
    input wire 	     i_rd_op,
-   output reg 	     o_init,
+   output reg 	     o_init = 1'b1,
    output reg 	     o_cnt_en,
    output wire 	     o_cnt0,
    output wire 	     o_cnt0to3,
